@@ -1,7 +1,5 @@
 package com.demianenko.application.model.entities;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 public class User {
@@ -12,16 +10,17 @@ public class User {
     private String email;
     private String password;
     private Role role;
-    private List<ExamResult> examResults;
 
-    public User(int id, String firstName, String secondName, String email, String password, Role role, List<ExamResult> examResults) {
+    public User() {
+    }
+
+    public User(int id, String firstName, String secondName, String email, String password, Role role) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.password = password;
         this.role = role;
-        this.examResults = examResults;
     }
 
     public int getId() {
@@ -72,14 +71,6 @@ public class User {
         this.role = role;
     }
 
-    public List<ExamResult> getExamResults() {
-        return examResults;
-    }
-
-    public void setExamResults(List<ExamResult> examResults) {
-        this.examResults = examResults;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -90,14 +81,13 @@ public class User {
                 Objects.equals(secondName, user.secondName) &&
                 Objects.equals(email, user.email) &&
                 Objects.equals(password, user.password) &&
-                role == user.role &&
-                Objects.equals(examResults, user.examResults);
+                role == user.role;
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, firstName, secondName, email, password, role, examResults);
+        return Objects.hash(id, firstName, secondName, email, password, role);
     }
 
     @Override
@@ -109,7 +99,6 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
-                ", examResults=" + examResults +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.demianenko.application.model.dao.interfaces;
+package com.demianenko.application.model.dao.interfaces.daoInt;
 
 import com.demianenko.application.model.entities.Course;
 

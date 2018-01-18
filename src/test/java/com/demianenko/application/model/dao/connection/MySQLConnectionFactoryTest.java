@@ -1,7 +1,6 @@
 package com.demianenko.application.model.dao.connection;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import java.sql.Statement;
 
 public class MySQLConnectionFactoryTest {
 
-    private static final Logger LOGGER = LogManager.getLogger(MySQLConnectionFactoryTest.class);
+    private final static Logger LOGGER = Logger.getLogger(MySQLConnectionFactoryTest.class);
 
     @Before
     public void setUp() throws Exception {

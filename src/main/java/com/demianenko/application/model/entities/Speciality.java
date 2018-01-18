@@ -1,20 +1,22 @@
 package com.demianenko.application.model.entities;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Speciality {
 
     private int id;
     private String name;
-    private List<Course> requiredCourses;
-    private List<User> subscribedUSers;
+    private int studentsNumber;
+    private int universityId;
 
-    public Speciality(int id, String name, List<Course> requiredCourses, List<User> subscribedUSers) {
+    public Speciality() {
+    }
+
+    public Speciality(int id, String name, int studentsNumber, int universityId) {
         this.id = id;
         this.name = name;
-        this.requiredCourses = requiredCourses;
-        this.subscribedUSers = subscribedUSers;
+        this.studentsNumber = studentsNumber;
+        this.universityId = universityId;
     }
 
     public int getId() {
@@ -33,20 +35,20 @@ public class Speciality {
         this.name = name;
     }
 
-    public List<Course> getRequiredCourses() {
-        return requiredCourses;
+    public int getStudentsNumber() {
+        return studentsNumber;
     }
 
-    public void setRequiredCourses(List<Course> requiredCourses) {
-        this.requiredCourses = requiredCourses;
+    public void setStudentsNumber(int studentsNumber) {
+        this.studentsNumber = studentsNumber;
     }
 
-    public List<User> getSubscribedUSers() {
-        return subscribedUSers;
+    public int getUniversityId() {
+        return universityId;
     }
 
-    public void setSubscribedUSers(List<User> subscribedUSers) {
-        this.subscribedUSers = subscribedUSers;
+    public void setUniversityId(int universityId) {
+        this.universityId = universityId;
     }
 
     @Override
@@ -55,15 +57,15 @@ public class Speciality {
         if (o == null || getClass() != o.getClass()) return false;
         Speciality that = (Speciality) o;
         return id == that.id &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(requiredCourses, that.requiredCourses) &&
-                Objects.equals(subscribedUSers, that.subscribedUSers);
+                studentsNumber == that.studentsNumber &&
+                universityId == that.universityId &&
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, requiredCourses, subscribedUSers);
+        return Objects.hash(id, name, studentsNumber, universityId);
     }
 
     @Override
@@ -71,8 +73,8 @@ public class Speciality {
         return "Speciality{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", requiredCourses=" + requiredCourses +
-                ", subscribedUSers=" + subscribedUSers +
+                ", studentsNumber=" + studentsNumber +
+                ", universityId=" + universityId +
                 '}';
     }
 }

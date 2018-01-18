@@ -1,8 +1,7 @@
 package com.demianenko.application.model.dao.connection;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -14,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class MySQLConnectionFactory implements IConnectionFactory {
 
-    private static final Logger LOGGER = LogManager.getLogger(MySQLConnectionFactory.class);
+    private final static Logger LOGGER = Logger.getLogger(MySQLConnectionFactory.class);
 
 	private DataSource dataSource;
 	private static MySQLConnectionFactory instance;
@@ -29,7 +28,7 @@ public class MySQLConnectionFactory implements IConnectionFactory {
 		return instance;
 	}
 
-	public Connection getConnection() throws SQLException {
+	public Connection getConnection(){
         try {
             return dataSource.getConnection();
         } catch (SQLException e) {

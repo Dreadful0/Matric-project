@@ -1,19 +1,25 @@
 package com.demianenko.application.model.entities;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class ExamResult {
 
     private int id;
-    private String date;
+    private java.util.Date date;
     private Integer mark;
-    private Course courese;
+    private int courseId;
+    private int userId;
 
-    public ExamResult(int id, String date, Integer mark, Course courese) {
+    public ExamResult() {
+    }
+
+    public ExamResult(int id, Date date, Integer mark, int courseId, int userId) {
         this.id = id;
         this.date = date;
         this.mark = mark;
-        this.courese = courese;
+        this.courseId = courseId;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -24,11 +30,11 @@ public class ExamResult {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -40,12 +46,20 @@ public class ExamResult {
         this.mark = mark;
     }
 
-    public Course getCourese() {
-        return courese;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourese(Course courese) {
-        this.courese = courese;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -54,24 +68,26 @@ public class ExamResult {
         if (o == null || getClass() != o.getClass()) return false;
         ExamResult that = (ExamResult) o;
         return id == that.id &&
+                courseId == that.courseId &&
+                userId == that.userId &&
                 Objects.equals(date, that.date) &&
-                Objects.equals(mark, that.mark) &&
-                Objects.equals(courese, that.courese);
+                Objects.equals(mark, that.mark);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, date, mark, courese);
+        return Objects.hash(id, date, mark, courseId, userId);
     }
 
     @Override
     public String toString() {
         return "ExamResult{" +
                 "id=" + id +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", mark=" + mark +
-                ", courese=" + courese +
+                ", courseId=" + courseId +
+                ", userId=" + userId +
                 '}';
     }
 }
