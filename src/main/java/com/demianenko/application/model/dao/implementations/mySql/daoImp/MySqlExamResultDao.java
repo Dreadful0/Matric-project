@@ -1,8 +1,7 @@
 package com.demianenko.application.model.dao.implementations.mySql.daoImp;
 
-import com.demianenko.application.controller.util.SqlToUtilDateConverter;
+import com.demianenko.application.controller.util.converters.SqlToUtilDateConverter;
 import com.demianenko.application.model.dao.connection.IConnectionFactory;
-import com.demianenko.application.model.dao.connection.MySQLConnectionFactory;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.MySqlGenericDao;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.mappers.ExamResultMapper;
 import com.demianenko.application.model.dao.interfaces.daoInt.IExamResultDao;
@@ -15,8 +14,8 @@ public class MySqlExamResultDao implements IExamResultDao {
     private IConnectionFactory cf;
     private MySqlGenericDao gDao;
 
-    public MySqlExamResultDao() {
-        this.cf = MySQLConnectionFactory.getInstance();
+    public MySqlExamResultDao(IConnectionFactory connectionFactory) {
+        this.cf = connectionFactory;
         gDao = new MySqlGenericDao(cf);
     }
 

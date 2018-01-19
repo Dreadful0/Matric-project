@@ -7,4 +7,6 @@ public interface IUserDao extends IGenericDao<User, Integer> {
 
     Role readRole(Long userId);
 
+    User findByEmail(String eMail);
+
 }

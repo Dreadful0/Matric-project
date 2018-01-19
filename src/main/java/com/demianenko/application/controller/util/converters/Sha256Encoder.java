@@ -1,4 +1,4 @@
-package com.demianenko.application.controller.util;
+package com.demianenko.application.controller.util.converters;
 
 import org.apache.log4j.Logger;
 

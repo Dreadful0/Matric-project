@@ -1,8 +1,5 @@
 package com.demianenko.application.controller.command;
 
-import com.demianenko.application.controller.util.Pages;
-import com.demianenko.application.model.dao.implementations.mySql.factoryImp.MySqlDaoFactory;
-import com.demianenko.application.model.entities.User;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -23,24 +20,31 @@ public class MainController extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        System.out.println("qwertyui");
-        LOGGER.debug("ascdvfdbgnfh");
+        LOGGER.debug("Main servlet init");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doGet(req, resp);
         LOGGER.debug("do Get");
-        User user = MySqlDaoFactory.getInstance().getUserDao().find(1);
-        req.setAttribute("test_data", user.getFirstName());
-        //LOGGER.debug(user.toString());
-        resp.sendRedirect(Pages.INDEX_JSP);
+        LOGGER.debug("parameter: "+req.getParameter("command"));
+        String commandName = req.getParameter("command");
+        if(commandName == null) return;
+        ICommand command = CommandList.valueOf(commandName).getCommand();
+        String redirect = command.execute(req, resp);
+        req.getRequestDispatcher(redirect).forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp);
-        //LOGGER.debug("do Post");
+        LOGGER.debug("do Post");
+        LOGGER.debug("parameter: "+req.getParameter("command"));
+        String commandName = req.getParameter("command");
+        if(commandName == null) return;
+        ICommand command = CommandList.valueOf(commandName).getCommand();
+        String redirect = command.execute(req, resp);
+        req.getRequestDispatcher(redirect).forward(req, resp);
     }
 
     @Override

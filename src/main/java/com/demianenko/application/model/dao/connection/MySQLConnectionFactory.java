@@ -24,7 +24,10 @@ public class MySQLConnectionFactory implements IConnectionFactory {
 	}
 
 	public static MySQLConnectionFactory getInstance(){
-		if(instance == null) initFromProperties("db");
+		if(instance == null) {
+            LOGGER.debug("Default init from properties file db");
+		    initFromProperties("db");
+        }
 		return instance;
 	}
 

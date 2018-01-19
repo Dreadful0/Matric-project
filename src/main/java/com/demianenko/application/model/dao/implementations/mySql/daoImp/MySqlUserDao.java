@@ -1,7 +1,6 @@
 package com.demianenko.application.model.dao.implementations.mySql.daoImp;
 
 import com.demianenko.application.model.dao.connection.IConnectionFactory;
-import com.demianenko.application.model.dao.connection.MySQLConnectionFactory;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.MySqlGenericDao;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.mappers.UserMapper;
 import com.demianenko.application.model.dao.interfaces.daoInt.IUserDao;
@@ -15,14 +14,22 @@ public class MySqlUserDao implements IUserDao {
     private IConnectionFactory cf;
     private MySqlGenericDao gDao;
 
-    public MySqlUserDao() {
-        this.cf = MySQLConnectionFactory.getInstance();
+    public MySqlUserDao(IConnectionFactory connectionFactory) {
+        this.cf = connectionFactory;
         gDao = new MySqlGenericDao(cf);
     }
 
     @Override
     public Role readRole(Long userId) {
         return null;
+    }
+
+    @Override
+    public User findByEmail(String eMail) {
+        User user;
+        user = gDao.findObject("SELECT * FROM user " +
+                "WHERE email=?",UserMapper::map, eMail);
+        return user;
     }
 
     @Override

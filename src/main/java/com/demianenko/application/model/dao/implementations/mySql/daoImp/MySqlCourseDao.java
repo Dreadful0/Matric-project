@@ -1,7 +1,6 @@
 package com.demianenko.application.model.dao.implementations.mySql.daoImp;
 
 import com.demianenko.application.model.dao.connection.IConnectionFactory;
-import com.demianenko.application.model.dao.connection.MySQLConnectionFactory;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.MySqlGenericDao;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.mappers.CourseMapper;
 import com.demianenko.application.model.dao.interfaces.daoInt.ICourseDao;
@@ -14,8 +13,8 @@ public class MySqlCourseDao implements ICourseDao {
     private IConnectionFactory cf;
     private MySqlGenericDao gDao;
 
-    public MySqlCourseDao() {
-        this.cf = MySQLConnectionFactory.getInstance();
+    public MySqlCourseDao(IConnectionFactory connectionFactory) {
+        this.cf = connectionFactory;
         gDao = new MySqlGenericDao(cf);
     }
 

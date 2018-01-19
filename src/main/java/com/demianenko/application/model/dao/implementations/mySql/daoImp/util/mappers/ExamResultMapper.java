@@ -1,6 +1,6 @@
 package com.demianenko.application.model.dao.implementations.mySql.daoImp.util.mappers;
 
-import com.demianenko.application.controller.util.SqlToUtilDateConverter;
+import com.demianenko.application.controller.util.converters.SqlToUtilDateConverter;
 import com.demianenko.application.model.entities.ExamResult;
 import org.apache.log4j.Logger;
 

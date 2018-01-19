@@ -1,4 +1,4 @@
-package com.demianenko.application.controller.util;
+package com.demianenko.application.controller.util.converters;
 
 public class SqlToUtilDateConverter {
 
