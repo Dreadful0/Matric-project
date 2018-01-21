@@ -11,6 +11,7 @@
     <c:import url="../components/navigation.jsp"/>
     <h1 style="color:red">ACCESS</h1>
     <h1 style="color:red">DENIED</h1>
+    <c:import url="../components/footer.jsp"/>
     <c:import url="../components/scripts.jsp"/>
 </body>
 </html>

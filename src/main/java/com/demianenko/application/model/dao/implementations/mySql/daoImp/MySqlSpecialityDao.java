@@ -64,4 +64,12 @@ public class MySqlSpecialityDao implements ISpecialityDao {
                 , SpecialityMapper::map);
         return list;
     }
+
+    @Override
+    public List<Speciality> getSpecialitiesByUniversityId(Integer id) {
+        List<Speciality> list = gDao.findObjects("SELECT * FROM speciality "+
+                "WHERE university_id = ?"
+                , SpecialityMapper::map, id);
+        return list;
+    }
 }

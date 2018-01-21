@@ -40,5 +40,7 @@ public class AppListener implements ServletContextListener {
         SecurityConstraints constraints = SecurityConstraints.getInstance();
         constraints.addConstraint("PERSONAL_INFO", Role.USER,Role.ADMIN);
         constraints.addConstraint("LOGOUT", Role.USER,Role.ADMIN);
+        constraints.addConstraint("ADMIN_PAGE_INFO", Role.ADMIN);
+        constraints.addConstraint("ADD_COURSE",Role.ADMIN);
     }
 }

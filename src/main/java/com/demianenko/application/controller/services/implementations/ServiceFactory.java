@@ -15,6 +15,9 @@ public class ServiceFactory implements IServiceFactory {
 
     private RegistrationService registrationService;
     private AuthenticationService authenticationService;
+    private CourseService courseService;
+    private UniversityService universityService;
+    private SpecialityService specialityService;
 
     public static void init(IDaoFactory daoFactory, IPasswordEncoder passwordEncoder){
         instance = new ServiceFactory(daoFactory, passwordEncoder);
@@ -23,6 +26,9 @@ public class ServiceFactory implements IServiceFactory {
     public ServiceFactory(IDaoFactory daoFactory, IPasswordEncoder passwordEncoder) {
         registrationService = new RegistrationService(daoFactory, passwordEncoder);
         authenticationService = new AuthenticationService(daoFactory, passwordEncoder);
+        courseService = new CourseService(daoFactory);
+        universityService = new UniversityService(daoFactory);
+        specialityService = new SpecialityService(daoFactory);
     }
 
     public static ServiceFactory getInstance() {
@@ -41,5 +47,20 @@ public class ServiceFactory implements IServiceFactory {
     @Override
     public AuthenticationService getAuthenticationService() {
         return authenticationService;
+    }
+
+    @Override
+    public CourseService getCourseService() {
+        return courseService;
+    }
+
+    @Override
+    public UniversityService getUniversityService() {
+        return universityService;
+    }
+
+    @Override
+    public SpecialityService getSpecialityService() {
+        return specialityService;
     }
 }

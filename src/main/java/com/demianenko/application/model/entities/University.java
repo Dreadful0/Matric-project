@@ -1,11 +1,13 @@
 package com.demianenko.application.model.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 public class University {
 
     private int id;
     private String name;
+    private List<Speciality> specialityList;
 
     public University() {
     }
@@ -51,6 +53,15 @@ public class University {
         return "University{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", specialityList=" + specialityList +
                 '}';
+    }
+
+    public List<Speciality> getSpecialityList() {
+        return specialityList;
+    }
+
+    public void setSpecialityList(List<Speciality> specialityList) {
+        this.specialityList = specialityList;
     }
 }

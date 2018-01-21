@@ -14,7 +14,7 @@
         <h1>Login page</h1>
         <div class="col-sm-6 col-lg-6 col-lg-offset-3" data-effect="slide-right">
             <form class="form-horizontal" action="/Main" method="post">
-                <input type="hidden" type="text" name="command" value="AUTHORIZATION">
+
                 <div class="form-group">
                     <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                     <div class="col-lg-10">
@@ -38,7 +38,10 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button type="submit" class="btn btn-default">Log in</button>
+                        <button type="submit" class="btn btn-default"
+                                name="command" value="AUTHORIZATION">
+                            Log in
+                        </button>
                     </div>
                 </div>
             </form>
@@ -48,6 +51,7 @@
         <h1>Don't have an account? <a href="/jsp/registration.jsp">Sign up</a></h1>
     </div>
     </div>
+    <c:import url="components/footer.jsp"/>
     <c:import url="components/scripts.jsp"/>
 </body>
 </html>

@@ -14,7 +14,6 @@
             <h1>Registration</h1>
             <div class="col-sm-6 col-lg-6 col-lg-offset-3 col-sm-offset-3" data-effect="slide-right">
                 <form class="form-horizontal" action="/Main" method="post">
-                    <input type="hidden" type="text" name="command" value="REGISTRATION">
                     <div class="form-group">
                         <label for="inputFirstName" class="col-lg-3 control-label">First name</label>
                         <div class="col-lg-9">
@@ -41,13 +40,17 @@
                     </div>
                     <div class="form-group">
                         <div class="col-lg-offset-3 col-lg-9">
-                            <button type="submit" class="btn btn-default">Sign up</button>
+                            <button type="submit" class="btn btn-default"
+                                    name="command" value="REGISTRATION">
+                                Sign up
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+    <c:import url="components/footer.jsp"/>
     <c:import url="components/scripts.jsp"/>
 </body>
 </html>

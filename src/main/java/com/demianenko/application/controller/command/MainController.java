@@ -1,5 +1,6 @@
 package com.demianenko.application.controller.command;
 
+import com.demianenko.application.controller.util.constants.SessionParameters;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
@@ -27,8 +28,8 @@ public class MainController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doGet(req, resp);
         LOGGER.debug("do Get");
-        LOGGER.debug("parameter: "+req.getParameter("command"));
-        String commandName = req.getParameter("command");
+        LOGGER.debug("parameter: "+req.getParameter(SessionParameters.COMMAND));
+        String commandName = req.getParameter(SessionParameters.COMMAND);
         if(commandName == null) return;
         ICommand command = CommandList.valueOf(commandName).getCommand();
         String redirect = command.execute(req, resp);
@@ -39,8 +40,8 @@ public class MainController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //super.doPost(req, resp);
         LOGGER.debug("do Post");
-        LOGGER.debug("parameter: "+req.getParameter("command"));
-        String commandName = req.getParameter("command");
+        LOGGER.debug("parameter: "+req.getParameter(SessionParameters.COMMAND));
+        String commandName = req.getParameter(SessionParameters.COMMAND);
         if(commandName == null) return;
         ICommand command = CommandList.valueOf(commandName).getCommand();
         String redirect = command.execute(req, resp);
