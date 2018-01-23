@@ -1,5 +1,6 @@
 package com.demianenko.application.model.dao.connection;
 
+import com.demianenko.application.model.dao.connection.proxy.DataSourceProxy;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import org.apache.log4j.Logger;
 
@@ -49,7 +50,8 @@ public class MySQLConnectionFactory implements IConnectionFactory {
             Context initialContext = new InitialContext();
             Context envContext = (Context) initialContext.lookup("java:/comp/env");
             DataSource ds = (DataSource) envContext.lookup(name);
-            instance = new MySQLConnectionFactory(ds);
+            DataSourceProxy dsProxy = new DataSourceProxy(ds);
+            instance = new MySQLConnectionFactory(dsProxy);
             LOGGER.debug("Initialising from JNDI completed");
         } catch (NamingException e) {
             LOGGER.error("Can't create initial context", e);
@@ -69,7 +71,8 @@ public class MySQLConnectionFactory implements IConnectionFactory {
             mySqlDS.setServerName(resourceBundle.getString("server"));
             mySqlDS.setPortNumber(Integer.parseInt(resourceBundle.getString("port")));
             mySqlDS.setDatabaseName(resourceBundle.getString("db"));
-            instance = new MySQLConnectionFactory(mySqlDS);
+            DataSourceProxy dsProxy = new DataSourceProxy(mySqlDS);
+            instance = new MySQLConnectionFactory(dsProxy);
             LOGGER.debug("Initialising from properties file completed");
         } catch (Exception e) {
             LOGGER.error("Can not initialise from properties file");

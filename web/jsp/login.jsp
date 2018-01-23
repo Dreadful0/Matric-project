@@ -62,6 +62,7 @@
         </h1>
     </div>
     </div>
+    <c:import url="components/error.jsp"/>
     <c:import url="components/footer.jsp"/>
     <c:import url="components/scripts.jsp"/>
 </body>

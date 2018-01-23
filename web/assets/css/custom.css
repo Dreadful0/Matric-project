@@ -26,7 +26,9 @@ footer {
 .navbar.navbar-fixed-top {
     position: absolute;
     top: 50px;
-    z-index: 0
+    z-index: 0;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .navbar.navbar-fixed-bottom .container,
@@ -58,4 +60,22 @@ footer {
 
 h1, h2 {
     text-align:center;
+}
+
+.alert {
+    position: fixed;
+    /*top: 40%;
+    width: 40%;
+    overflow: hidden;
+    margin: 0 auto;
+    left: 0;
+    right: 0;*/
+}
+
+.container {
+    margin-top: 80px;
+}
+
+.navbar-right {
+    margin-right: 0px;
 }

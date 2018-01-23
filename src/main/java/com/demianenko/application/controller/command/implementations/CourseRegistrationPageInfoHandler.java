@@ -6,21 +6,28 @@ import com.demianenko.application.controller.util.constants.Pages;
 import com.demianenko.application.model.entities.Course;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
+/**
+ * Course registration page info handler
+ *
+ * Return data for displaying exam registration page
+ */
 public class CourseRegistrationPageInfoHandler implements ICommand {
 
     private final static Logger LOGGER = Logger.getLogger(CourseRegistrationPageInfoHandler.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOGGER.debug("Show course registration page");
-        List<Course> courses = ServiceFactory.getInstance().getCourseService().getAllCourses();
-        request.setAttribute("coursesList", courses);
+        try {
+            List<Course> courses = ServiceFactory.getInstance().getCourseService().getAllCourses();
+            request.setAttribute("coursesList", courses);
+        } catch (Exception e) {
+            return Pages.COURSES_PAGE_DIRECT_PATH+"?error=cantShowCourseRegistrationPageInfo";
+        }
         return Pages.COURSES_PAGE_DIRECT_PATH;
     }
 }

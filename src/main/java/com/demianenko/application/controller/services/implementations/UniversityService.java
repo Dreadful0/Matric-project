@@ -8,6 +8,9 @@ import org.apache.log4j.Logger;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Groups business logic for universities managing
+ */
 public class UniversityService {
 
     private final static Logger LOGGER = Logger.getLogger(UniversityService.class);
@@ -18,33 +21,56 @@ public class UniversityService {
         this.daoFactory = daoFactory;
     }
 
+    /**
+     * Performs adding new University entity
+     *
+     * @param university University
+     */
     public void addUniversity(University university){
         daoFactory.getUniversityDao().add(university);
     }
 
+    /**
+     * Performs deleting university by id
+     *
+     * @param id University id
+     */
     public void deleteUniversity(int id){
         daoFactory.getUniversityDao().delete(id);
     }
 
-    public  void modifyUniversity(University university){
+    /**
+     * Performs modifying university
+     *
+     * @param university University
+     */
+    public void modifyUniversity(University university){
         daoFactory.getUniversityDao().update(university);
     }
 
+    /**
+     * Returns all universities
+     *
+     * @return List of Universities
+     */
     public List<University> getAllUniversities(){
         return daoFactory.getUniversityDao().findAll();
     }
 
+    /**
+     * Returns all universities with loaded specialities
+     *
+     * @return List of Universities
+     */
     public List<University> getAllUniversitiesWithSpecialities(){
         List<University> universityList = daoFactory.getUniversityDao().findAll();
         List<Speciality> specialityList = ServiceFactory.getInstance()
                 .getSpecialityService().getAllSpecialitiesWithCourses();
 
-        universityList.stream().forEach((x)->{
+        universityList.forEach((x)->{
             x.setSpecialityList(specialityList.stream().filter((spec)->{
                 return spec.getUniversityId()==x.getId();
             }).collect(Collectors.toList()));
-            //x.setSpecialityList(daoFactory.getSpecialityDao()
-            //        .getSpecialitiesByUniversityId(x.getId()));
         });
         return universityList;
     }

@@ -7,6 +7,9 @@ import com.demianenko.application.model.entities.Role;
 import com.demianenko.application.model.entities.User;
 import org.apache.log4j.Logger;
 
+/**
+ * Groups business logic for registration
+ */
 public class RegistrationService {
 
     private final static Logger LOGGER = Logger.getLogger(RegistrationService.class);
@@ -18,21 +21,24 @@ public class RegistrationService {
         this.encoder = encoder;
     }
 
-    public boolean register(User user) throws UserInfoException{
+    /**
+     * Performs user registration
+     *
+     * @param user new User entity
+     * @throws UserInfoException if email are already exist
+     */
+    public void register(User user) throws UserInfoException{
         String encodedPass = encoder.encode(user.getPassword());
         user.setPassword(encodedPass);
         user.setRole(Role.USER);
         user.setEmail(user.getEmail().toLowerCase());
 
-        synchronized (this) {
-            User exist = daoFactory.getUserDao().findByEmail(user.getEmail());
-            if (exist == null) {
-                daoFactory.getUserDao().add(user);
-                return true;
-            } else {
-                LOGGER.debug("Can not add user, email already exist");
-                throw new UserInfoException("EmailAlreadyExist");
-            }
+        User exist = daoFactory.getUserDao().findByEmail(user.getEmail());
+        if (exist == null) {
+            daoFactory.getUserDao().add(user);
+        } else {
+            LOGGER.debug("Can not add user, email already exist");
+            throw new UserInfoException("emailAlreadyExist");
         }
     }
 }

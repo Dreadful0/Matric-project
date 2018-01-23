@@ -6,19 +6,27 @@ import com.demianenko.application.controller.util.constants.Pages;
 import com.demianenko.application.controller.util.constants.SessionParameters;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
+/**
+ * Set attempts handler
+ *
+ * Allows admin to add users exam attempts that represents
+ * how many courses the user can choose
+ */
 public class SetAttemptsHandler implements ICommand {
 
     private final static Logger LOGGER = Logger.getLogger(SetExamMarkHandler.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOGGER.debug("Set exam attempts");
-        ServiceFactory.getInstance().getUserService().setUsersExamAttempts(SessionParameters.EXAM_ATTEMPTS);
+        try {
+            ServiceFactory.getInstance().getUserService().setUsersExamAttempts(SessionParameters.EXAM_ATTEMPTS);
+        } catch (Exception e) {
+            return Pages.ADMIN_PAGE+"?error=settingAttemptsError";
+        }
         return Pages.ADMIN_PAGE;
     }
 }

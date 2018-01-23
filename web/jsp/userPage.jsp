@@ -9,6 +9,7 @@
 </head>
 <body>
     <c:import url="components/navigation.jsp"/>
+    <div class="container">
     <h1>
         <fmt:message key="userPage.hello" bundle="${rb}"/>
         <c:out value="${user.firstName}"/>
@@ -68,6 +69,8 @@
         </c:forEach>
         </tbody>
     </table>
+    </div>
+    <c:import url="components/error.jsp"/>
     <c:import url="components/footer.jsp"/>
     <c:import url="components/scripts.jsp"/>
 </body>

@@ -8,27 +8,34 @@ import com.demianenko.application.model.entities.SpecialityRequest;
 import com.demianenko.application.model.entities.User;
 import org.apache.log4j.Logger;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
+/**
+ * Personal info handler
+ *
+ * returns Users personal info
+ */
 public class PersonalInfoHandler implements ICommand{
 
     private final static Logger LOGGER = Logger.getLogger(PersonalInfoHandler.class);
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) {
         LOGGER.debug("Show personal info");
-        User user = (User) request.getSession().getAttribute("currentUser");
-        List<ExamResult> usersExamResults = ServiceFactory.getInstance().getExamService()
-                .getVerifiedUsersExamResults(user);
-        List<SpecialityRequest> usersSpecialityRequests = ServiceFactory.getInstance()
-                .getSpecialityApplyingService().getUserSpecialityRequests(user);
-        request.setAttribute("user", user);
-        request.setAttribute("usersExamResultList", usersExamResults);
-        request.setAttribute("usersSpecialityRequestList", usersSpecialityRequests);
+        try {
+            User user = (User) request.getSession().getAttribute("currentUser");
+            List<ExamResult> usersExamResults = ServiceFactory.getInstance().getExamService()
+                    .getVerifiedUsersExamResults(user);
+            List<SpecialityRequest> usersSpecialityRequests = ServiceFactory.getInstance()
+                    .getSpecialityApplyingService().getUserSpecialityRequests(user);
+            request.setAttribute("user", user);
+            request.setAttribute("usersExamResultList", usersExamResults);
+            request.setAttribute("usersSpecialityRequestList", usersSpecialityRequests);
+        } catch (Exception e) {
+            return Pages.USER_PAGE_DIRECT_PATH+"?error=cantShowPersonalInfo";
+        }
         return Pages.USER_PAGE_DIRECT_PATH;
     }
 }

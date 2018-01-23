@@ -41,7 +41,6 @@ public class MySqlGenericDao {
 
         } catch (SQLException e) {
             LOGGER.error("Can't insert into DB");
-            //throw new RuntimeSqlException(e);
         } finally {
             closeConn(connection);
         }
@@ -64,7 +63,6 @@ public class MySqlGenericDao {
 
         } catch (SQLException e) {
             LOGGER.error("Can't get object DB");
-            //throw new RuntimeSqlException(e);
         } finally {
             closeConn(connection);
         }
@@ -104,7 +102,6 @@ public class MySqlGenericDao {
             return stmt.executeUpdate();
         } catch (SQLException e) {
             LOGGER.error("Cannot execute update query", e);
-            //throw new RuntimeSqlException(e);
             return 0;
         } finally {
             closeConn(conn);

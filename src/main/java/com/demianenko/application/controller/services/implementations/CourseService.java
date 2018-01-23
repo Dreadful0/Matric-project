@@ -6,6 +6,9 @@ import org.apache.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * Groups business logic for courses administration
+ */
 public class CourseService {
 
     private final static Logger LOGGER = Logger.getLogger(CourseService.class);
