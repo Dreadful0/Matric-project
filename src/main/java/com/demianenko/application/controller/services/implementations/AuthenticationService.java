@@ -32,6 +32,9 @@ public class AuthenticationService {
 
     public User validate(String email, String password){
         LOGGER.debug("validating user");
+        if(email == null || password == null){
+            return null;
+        }
         User founded = daoFactory.getUserDao().findByEmail(email);
         if(founded == null) {
             LOGGER.debug("User not found");

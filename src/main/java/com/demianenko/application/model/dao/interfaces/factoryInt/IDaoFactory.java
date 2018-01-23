@@ -13,4 +13,6 @@ public interface IDaoFactory {
     IUniversityDao getUniversityDao();
 
     IUserDao getUserDao();
+
+    ISpecialityRequestDao getSpecialityRequestDao();
 }

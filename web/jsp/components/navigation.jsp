@@ -17,18 +17,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav">
-            <li><a href="/Main?command=ADMIN_PAGE_INFO">
-                <fmt:message key="navigation.adminPage" bundle="${rb}"/>
-            </a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                     <fmt:message key="navigation.language" bundle="${rb}"/><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li><a href="/Main?command=LOCALIZATION">English</a></li>
-                    <li><a href="/Main?command=LOCALIZATION&language=uk_UA">Ukrainian</a></li>
+                    <li><a href="/Main?command=LOCALIZATION&language=uk_UA">Українська</a></li>
                 </ul>
             </li>
+            <li><a href="/Main?command=ADMIN_PAGE_INFO">
+                <fmt:message key="navigation.adminPage" bundle="${rb}"/>
+            </a></li>
+            <li><a href="/Main?command=COURSE_REGISTRATION_PAGE_INFO">
+                <fmt:message key="navigation.courseRegistration" bundle="${rb}"/>
+            </a></li>
+            <li><a href="/Main?command=SPECIALITY_REGISTRATION_PAGE_INFO">
+                <fmt:message key="navigation.specialityRegistration" bundle="${rb}"/>
+            </a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/Main?command=PERSONAL_INFO">

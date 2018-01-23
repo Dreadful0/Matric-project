@@ -4,7 +4,6 @@ import com.demianenko.application.model.dao.connection.IConnectionFactory;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.MySqlGenericDao;
 import com.demianenko.application.model.dao.implementations.mySql.daoImp.util.mappers.UserMapper;
 import com.demianenko.application.model.dao.interfaces.daoInt.IUserDao;
-import com.demianenko.application.model.entities.Role;
 import com.demianenko.application.model.entities.User;
 
 import java.util.List;
@@ -20,8 +19,11 @@ public class MySqlUserDao implements IUserDao {
     }
 
     @Override
-    public Role readRole(Long userId) {
-        return null;
+    public void setAllUsersExamAttempts(Integer examAttempts) {
+        gDao.update("UPDATE user " +
+                        "SET " +
+                        "exam_attempts = ?",
+                examAttempts);
     }
 
     @Override
@@ -39,13 +41,15 @@ public class MySqlUserDao implements IUserDao {
                         "second_name," +
                         "email," +
                         "password," +
-                        "role)" +
-                        "VALUES(?,?,?,?,?)",
+                        "role," +
+                        "exam_attempts)"+
+                        "VALUES(?,?,?,?,?,?)",
                 user.getFirstName(),
                 user.getSecondName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getRole().toString());
+                user.getRole().toString(),
+                user.getExamAttempts());
     }
 
     @Override
@@ -61,16 +65,18 @@ public class MySqlUserDao implements IUserDao {
         gDao.update("UPDATE user " +
                         "SET " +
                         "first_name = ?," +
-                        "last_name = ?," +
+                        "second_name = ?," +
                         "email = ?," +
                         "password = ?," +
-                        "role = ? " +
+                        "role = ?," +
+                        "exam_attempts = ? "+
                         "WHERE id=?",
                 user.getFirstName(),
                 user.getSecondName(),
                 user.getEmail(),
                 user.getPassword(),
                 user.getRole().toString(),
+                user.getExamAttempts(),
                 user.getId());
     }
 

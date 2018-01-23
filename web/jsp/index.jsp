@@ -9,18 +9,13 @@
 </head>
 <body>
     <c:import url="components/navigation.jsp"/>
-    <fmt:message key="navigation.login" bundle="${rb}"/>
-    <h1>Index jsp test</h1>
-    <form action="/Main" method="post">
-        <input type="text" name="testParam1" value="тесті">
-        <input type="submit" value="Submit!">
-    </form>
-    <form action="/Main" method="get">
-        <input type="text" name="testParam1" value="тесті">
-        <input type="submit" value="Submit!">
-    </form>
-    <h1>test1</h1>
-    <c:out value="${test_data}"/>
+    <h1><fmt:message key="index.welcome" bundle="${rb}"/></h1>
+    <h2><fmt:message key="index.slogan" bundle="${rb}"/></h2>
+    <h2><fmt:message key="loginPage.dontHaveAccount" bundle="${rb}"/>
+        <a href="/jsp/registration.jsp">
+            <fmt:message key="loginPage.signUp" bundle="${rb}"/>
+        </a>
+    </h2>
     <c:import url="components/footer.jsp"/>
     <c:import url="components/scripts.jsp"/>
 </body>

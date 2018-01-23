@@ -16,8 +16,11 @@ public class SpecialityService {
         this.daoFactory = daoFactory;
     }
 
-    public void addSpeciality(Speciality speciality){
-        daoFactory.getSpecialityDao().add(speciality);
+    public void addSpeciality(Speciality speciality, List<Integer> coursesId){
+        Integer specialityId = daoFactory.getSpecialityDao().add(speciality);
+        for (Integer id: coursesId) {
+            daoFactory.getSpecialityDao().addCourse(specialityId, id);
+        }
     }
 
     public void deleteSpeciality(int id){
@@ -30,5 +33,13 @@ public class SpecialityService {
 
     public List<Speciality> getAllSpecialities(){
         return daoFactory.getSpecialityDao().findAll();
+    }
+
+    public List<Speciality> getAllSpecialitiesWithCourses(){
+        List<Speciality> specialityList = daoFactory.getSpecialityDao().findAll();
+        specialityList.stream().forEach((x)->{
+            x.setRequiredCourses(daoFactory.getSpecialityDao().getRequiredCoursesList(x.getId()));
+        });
+        return specialityList;
     }
 }

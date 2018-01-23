@@ -12,7 +12,6 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-12">
-                <p class="lead text-muted">Tabs</p>
                 <div class="tabbable">
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#tab11" data-toggle="tab" aria-expanded="true">
@@ -33,7 +32,92 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab11">
-                            <p>I'm in Section 1. Donec vulputate tristique elit ut molestie. Suspendisse faucibus bibendum ipsum. </p>
+                            <form class="form-horizontal" action="/Main" method="post">
+                                <div class="panel-group" id="accordion-panel2">
+                                    <c:forEach items="${coursesList}" var="course" varStatus="loop">
+                                        <div class="panel panel-default">
+                                            <div class="accordion-heading specialityTabUniversityAcordHeading">
+                                                <a class="accordion-toggle collapsed" data-toggle="collapse"
+                                                   data-parent="#accordion-panel2" href="#collapsePanel0${loop.index}"
+                                                   aria-expanded="false" >
+                                                    <c:out value="${course.name}"/>
+                                                </a>
+                                            </div>
+                                            <div id="collapsePanel0${loop.index}" class="panel-collapse collapse" aria-expanded="false"
+                                                 style="height: 0px;">
+                                                <div class="panel-body">
+                                                    <table id="examResultTables" class="table table-striped" data-effect="fade">
+                                                        <thead>
+                                                        <tr>
+                                                            <th><fmt:message key="universal.number" bundle="${rb}"/></th>
+                                                            <th><fmt:message key="adminPage.marksTab.firstName" bundle="${rb}"/></th>
+                                                            <th><fmt:message key="adminPage.marksTab.secondName" bundle="${rb}"/></th>
+                                                            <th><fmt:message key="adminPage.marksTab.email" bundle="${rb}"/></th>
+                                                            <th><fmt:message key="universal.select" bundle="${rb}"/></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <c:forEach items="${examResultsMap.get(course.id)}" var="examResult" varStatus="loop">
+                                                            <tr>
+                                                                <td><c:out value="${loop.index+1}"/></td>
+                                                                <td><c:out value="${examResult.user.firstName}"/></td>
+                                                                <td><c:out value="${examResult.user.secondName}"/></td>
+                                                                <td><c:out value="${examResult.user.email}"/></td>
+                                                                <td>
+                                                                    <input type="radio" name="chosenExamResult"
+                                                                           autocomplete="on" required="required"
+                                                                           value="${examResult.id}"/>
+                                                                </td>
+                                                            </tr>
+                                                        </c:forEach>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </div>
+                                <button type="button" class="btn btn-default" data-toggle="modal" href="#setMarkModal">
+                                    <fmt:message key="adminPage.marksTab.setMark" bundle="${rb}"/>
+                                </button>
+                                <div id="setMarkModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addSpecialityModalLabel" aria-hidden="true" style="display: none;">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="form-horizontal">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    <h4 class="modal-title text-center" id="setMarkModalLabel">
+                                                        <fmt:message key="adminPage.marksTab.setMark" bundle="${rb}"/>
+                                                    </h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label for="inputMark" class="col-lg-2 control-label">
+                                                            <fmt:message key="adminPage.marksTab.mark" bundle="${rb}"/>
+                                                        </label>
+                                                        <div class="col-lg-10">
+                                                            <input type="number" name="inputMark" class="form-control"
+                                                                   id="inputMark" autocomplete="on" required="required"
+                                                                   placeholder="<fmt:message key="adminPage.marksTab.mark" bundle="${rb}"/>">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                                                        <fmt:message key="universal.close" bundle="${rb}"/>
+                                                    </button>
+                                                    <button type="submit" class="btn btn-primary"
+                                                            name="command" value="SET_MARK">
+                                                        <fmt:message key="adminPage.marksTab.setMark" bundle="${rb}"/>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.modal-content -->
+                                    </div>
+                                    <!-- /.modal-dialog -->
+                                </div>
+                            </form>
                         </div>
                         <div class="tab-pane" id="tab12">
                             <form class="form-horizontal" action="/Main" method="post">
@@ -183,7 +267,6 @@
                         </div>
                         <div class="tab-pane" id="tab14">
                             <form class="form-horizontal" action="/Main" method="post">
-                                <h3>Collapsible Panels</h3>
                                 <div class="panel-group" id="accordion-panel">
                                     <c:forEach items="${universitiesList}" var="university" varStatus="loop">
                                     <div class="panel panel-default">
@@ -206,6 +289,7 @@
                                                         <th><fmt:message key="universal.number" bundle="${rb}"/></th>
                                                         <th><fmt:message key="adminPage.specialitiesTab.specialityName" bundle="${rb}"/></th>
                                                         <th><fmt:message key="adminPage.specialitiesTab.specialityStudentsNumber" bundle="${rb}"/></th>
+                                                        <th><fmt:message key="adminPage.specialitiesTab.requiredCourses" bundle="${rb}"/></th>
                                                         <th><fmt:message key="universal.select" bundle="${rb}"/></th>
                                                     </tr>
                                                     </thead>
@@ -215,6 +299,15 @@
                                                             <td><c:out value="${loop.index+1}"/></td>
                                                             <td><c:out value="${speciality.name}"/></td>
                                                             <td><c:out value="${speciality.studentsNumber}"/></td>
+                                                            <td>
+                                                                <table>
+                                                                    <c:forEach items="${speciality.requiredCourses}" var="course">
+                                                                        <tr>
+                                                                        <td><c:out value="${course.name}"/></td>
+                                                                        </tr>
+                                                                    </c:forEach>
+                                                                </table>
+                                                            </td>
                                                             <td>
                                                                 <input type="radio" name="chosenSpeciality"
                                                                        autocomplete="on"
@@ -248,23 +341,38 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <div class="form-group">
-                                                        <label for="inputSpecialityName" class="col-lg-3 control-label">
+                                                        <label for="inputSpecialityName" class="col-lg-4 control-label">
                                                             <fmt:message key="adminPage.specialitiesTab.specialityName" bundle="${rb}"/>
                                                         </label>
-                                                        <div class="col-lg-9">
+                                                        <div class="col-lg-8">
                                                             <input type="text" name="inputSpecialityName" class="form-control"
                                                                    id="inputSpecialityName" autocomplete="on"
                                                                    placeholder="<fmt:message key="adminPage.specialitiesTab.specialityName" bundle="${rb}"/>">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="inputSpecialityStudentsNumber" class="col-lg-3 control-label">
+                                                        <label for="inputSpecialityStudentsNumber" class="col-lg-4 control-label">
                                                             <fmt:message key="adminPage.specialitiesTab.specialityStudentsNumber" bundle="${rb}"/>
                                                         </label>
-                                                        <div class="col-lg-9">
+                                                        <div class="col-lg-8">
                                                             <input type="number" name="inputSpecialityStudentsNumber" class="form-control"
                                                                    id="inputSpecialityStudentsNumber" autocomplete="on"
                                                                    placeholder="<fmt:message key="adminPage.specialitiesTab.specialityStudentsNumber" bundle="${rb}"/>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-lg-4 control-label">
+                                                            <fmt:message key="adminPage.specialitiesTab.requiredCourses" bundle="${rb}"/>
+                                                        </label>
+                                                        <div class="col-lg-8">
+                                                            <c:forEach items="${coursesList}" var="course" varStatus="loop">
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        <input class="addSpecialityCheckbox" type="checkbox" name="inputSpecialityCoursesId" value="${course.id}">
+                                                                        <c:out value="${course.name}"/>
+                                                                    </label>
+                                                                </div>
+                                                            </c:forEach>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -286,7 +394,59 @@
                             </form>
                         </div>
                         <div class="tab-pane" id="tab15">
-                            <p>Howdy, I'm in Section 2.Morbi vel nibh et arcu pretium adipiscing. Ut vestibulum est eget justo facilisis ullamcorper. </p>
+                            <div class="col-sm-6 col-lg-6 col-lg-offset-3" data-effect="slide-right">
+                                <form class="form-horizontal" action="/Main" method="post">
+                                    <h2><fmt:message key="adminPage.usersTab.changeRole" bundle="${rb}"/></h2>
+                                    <div class="form-group">
+                                        <label for="inputEmail" class="col-lg-3 control-label">
+                                            <fmt:message key="adminPage.usersTab.email" bundle="${rb}"/>
+                                        </label>
+                                        <div class="col-lg-9">
+                                            <input type="text" name="inputEmail"
+                                                   class="form-control" id="inputEmail"
+                                                   autocomplete="on" required="required"
+                                                   placeholder="<fmt:message key="adminPage.usersTab.email" bundle="${rb}"/>">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputRole" class="col-lg-3 control-label">
+                                            <fmt:message key="adminPage.usersTab.role" bundle="${rb}"/>
+                                        </label>
+                                        <div class="col-lg-9">
+                                            <select name="inputRole" class="form-control" id="inputRole"
+                                                    autocomplete="on" required="required">
+                                                <option value="user">
+                                                    <fmt:message key="adminPage.usersTab.roleUser" bundle="${rb}"/>
+                                                </option>
+                                                <option value="admin">
+                                                    <fmt:message key="adminPage.usersTab.roleAdmin" bundle="${rb}"/>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-3 col-lg-9">
+                                            <button type="submit" class="btn btn-default"
+                                                    name="command" value="CHANGE_ROLE">
+                                                <fmt:message key="adminPage.usersTab.changeRole" bundle="${rb}"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <h1><fmt:message key="adminPage.usersTab.matricControls" bundle="${rb}"/></h1>
+                                <form class="form-horizontal" action="/Main" method="post">
+                                    <button type="submit" class="btn btn-default"
+                                            name="command" value="SET_EXAM_ATTEMPTS">
+                                        <fmt:message key="adminPage.usersTab.setExamAttempts" bundle="${rb}"/>
+                                    </button>
+                                </form>
+                                <form class="form-horizontal" action="/Main" method="post">
+                                    <button type="submit" class="btn btn-default"
+                                            name="command" value="PROCESS_RATINGS">
+                                        <fmt:message key="adminPage.usersTab.processRatings" bundle="${rb}"/>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -373,11 +533,18 @@
         $('#addCourseModal').appendTo("body");
         $(document).ready(function() {
 
-            $('#coursesTable tr, #universitiesTable tr, #specialityTables tr, .specialityTabUniversityAcordHeading').click(function() {
+            $('#coursesTable tr, #universitiesTable tr, #specialityTables tr, #examResultTables tr, ' +
+                '.specialityTabUniversityAcordHeading').click(function() {
                 var radio = $(this).find("input");
                 radio.prop("checked", true);
             });
 
+        });
+        var limit = 3;
+        $('input.addSpecialityCheckbox').on('change', function(evt) {
+            if($('input.addSpecialityCheckbox:checked').length > limit) {
+                this.checked = false;
+            }
         });
     </script>
 </body>

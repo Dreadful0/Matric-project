@@ -10,17 +10,20 @@ public class User {
     private String email;
     private String password;
     private Role role;
+    private Integer examAttempts;
 
     public User() {
     }
 
-    public User(int id, String firstName, String secondName, String email, String password, Role role) {
+    public User(int id, String firstName, String secondName, String email,
+                String password, Role role, Integer examAttempts) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
         this.email = email;
         this.password = password;
         this.role = role;
+        this.examAttempts = examAttempts;
     }
 
     public int getId() {
@@ -71,6 +74,14 @@ public class User {
         this.role = role;
     }
 
+    public Integer getExamAttempts() {
+        return examAttempts;
+    }
+
+    public void setExamAttempts(Integer examAttempts) {
+        this.examAttempts = examAttempts;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -99,6 +110,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", examAttempts=" + examAttempts +
                 '}';
     }
 }

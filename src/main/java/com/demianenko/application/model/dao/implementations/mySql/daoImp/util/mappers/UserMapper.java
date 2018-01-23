@@ -20,6 +20,7 @@ public class UserMapper {
             user.setPassword(rs.getString("password"));
             user.setSecondName(rs.getString("second_name"));
             user.setRole(Role.getRole(rs.getString("role")));
+            user.setExamAttempts(rs.getInt("exam_attempts"));
         } catch (SQLException e){
             LOGGER.error("Can not map User", e);
             return null;

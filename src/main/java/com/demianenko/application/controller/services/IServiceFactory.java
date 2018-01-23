@@ -14,4 +14,10 @@ public interface IServiceFactory {
 
     SpecialityService getSpecialityService();
 
+    UserService getUserService();
+
+    ExamService getExamService();
+
+    SpecialityApplyingService getSpecialityApplyingService();
+
 }

@@ -1,5 +1,6 @@
 package com.demianenko.application.model.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Speciality {
@@ -8,6 +9,7 @@ public class Speciality {
     private String name;
     private int studentsNumber;
     private int universityId;
+    private List<Course> requiredCourses;
 
     public Speciality() {
     }
@@ -75,6 +77,15 @@ public class Speciality {
                 ", name='" + name + '\'' +
                 ", studentsNumber=" + studentsNumber +
                 ", universityId=" + universityId +
+                ", requiredCourses=" + requiredCourses +
                 '}';
+    }
+
+    public List<Course> getRequiredCourses() {
+        return requiredCourses;
+    }
+
+    public void setRequiredCourses(List<Course> requiredCourses) {
+        this.requiredCourses = requiredCourses;
     }
 }

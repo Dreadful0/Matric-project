@@ -1,5 +1,6 @@
 package com.demianenko.application.app;
 
+import com.demianenko.application.controller.command.CommandList;
 import com.demianenko.application.controller.services.implementations.ServiceFactory;
 import com.demianenko.application.controller.util.SecurityConstraints;
 import com.demianenko.application.controller.util.converters.Sha256Encoder;
@@ -38,9 +39,24 @@ public class AppListener implements ServletContextListener {
 
     private void initSecurityConstraints(){
         SecurityConstraints constraints = SecurityConstraints.getInstance();
-        constraints.addConstraint("PERSONAL_INFO", Role.USER,Role.ADMIN);
-        constraints.addConstraint("LOGOUT", Role.USER,Role.ADMIN);
-        constraints.addConstraint("ADMIN_PAGE_INFO", Role.ADMIN);
-        constraints.addConstraint("ADD_COURSE",Role.ADMIN);
+        constraints.addConstraint(CommandList.PERSONAL_INFO.name(), Role.USER,Role.ADMIN);
+        constraints.addConstraint(CommandList.LOGOUT.name(), Role.USER,Role.ADMIN);
+        constraints.addConstraint(CommandList.ADMIN_PAGE_INFO.name(), Role.ADMIN);
+        constraints.addConstraint(CommandList.ADD_COURSE.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.DELETE_COURSE.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.MODIFY_COURSE.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.ADD_UNIVERSITY.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.DELETE_UNIVERSITY.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.MODIFY_UNIVERSITY.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.ADD_SPECIALITY.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.DELETE_SPECIALITY.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.CHANGE_ROLE.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.COURSE_REGISTRATION_PAGE_INFO.name(),Role.USER);
+        constraints.addConstraint(CommandList.SPECIALITY_REGISTRATION_PAGE_INFO.name(),Role.USER);
+        constraints.addConstraint(CommandList.REGISTER_FOR_EXAM.name(),Role.USER);
+        constraints.addConstraint(CommandList.SET_MARK.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.APPLY_FOR_SPECIALITY.name(),Role.USER);
+        constraints.addConstraint(CommandList.SET_EXAM_ATTEMPTS.name(),Role.ADMIN);
+        constraints.addConstraint(CommandList.PROCESS_RATINGS.name(),Role.ADMIN);
     }
 }

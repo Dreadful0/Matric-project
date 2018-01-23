@@ -10,6 +10,8 @@ public class ExamResult {
     private Integer mark;
     private int courseId;
     private int userId;
+    private User user;
+    private Course course;
 
     public ExamResult() {
     }
@@ -88,6 +90,24 @@ public class ExamResult {
                 ", mark=" + mark +
                 ", courseId=" + courseId +
                 ", userId=" + userId +
+                ", user=" + user +
+                ", course=" + course +
                 '}';
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

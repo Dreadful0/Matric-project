@@ -17,6 +17,7 @@ public class MySqlDaoFactory implements IDaoFactory {
     private MySqlSpecialityDao specialityDao;
     private MySqlUniversityDao universityDao;
     private MySqlExamResultDao examResultDao;
+    private MySqlSpecialityRequestDao specialityRequestDao;
 
     private MySqlDaoFactory(IConnectionFactory connectionFactory) {
         userDao = new MySqlUserDao(connectionFactory);
@@ -24,6 +25,7 @@ public class MySqlDaoFactory implements IDaoFactory {
         specialityDao = new MySqlSpecialityDao(connectionFactory);
         universityDao = new MySqlUniversityDao(connectionFactory);
         examResultDao = new MySqlExamResultDao(connectionFactory);
+        specialityRequestDao = new MySqlSpecialityRequestDao(connectionFactory);
     }
 
     public static void init(IConnectionFactory connectionFactory){
@@ -61,5 +63,10 @@ public class MySqlDaoFactory implements IDaoFactory {
     @Override
     public IUserDao getUserDao() {
         return userDao;
+    }
+
+    @Override
+    public ISpecialityRequestDao getSpecialityRequestDao() {
+        return specialityRequestDao;
     }
 }
