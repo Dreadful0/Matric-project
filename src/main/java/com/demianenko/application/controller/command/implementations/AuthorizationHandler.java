@@ -29,12 +29,12 @@ public class AuthorizationHandler implements ICommand {
         String pass = request.getParameter("inputPassword");
         LOGGER.debug("Authorization: remember: "+ remember+" email: " + email);
         if(Str.isEmpty(email, pass)){
-            return Pages.LOGIN_PAGE+"?error=voidInputParameters";
+            return Pages.LOGIN_PAGE+"error=voidInputParameters";
         }
         try {
             ServiceFactory.getInstance().getAuthenticationService().login(request.getSession(), email, pass);
         } catch (UserInfoException e) {
-            return Pages.LOGIN_PAGE+"?error="+e.getMessage();
+            return Pages.LOGIN_PAGE+"error="+e.getMessage();
         }
         if("on".equals(remember)) {
             Cookie emailCookie = new Cookie("email", email);

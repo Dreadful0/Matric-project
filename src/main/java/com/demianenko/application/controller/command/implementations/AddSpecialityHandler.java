@@ -32,7 +32,7 @@ public class AddSpecialityHandler implements ICommand {
         LOGGER.debug("Add speciality "+chosenUniversity+" "+specialityName+" "
                 +numberOfStudents);
         if(Str.isEmpty(chosenUniversity,specialityName,numberOfStudents) || coursesId.length==0){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             List<Integer> coursesIdList = Arrays.stream(coursesId)
@@ -44,9 +44,9 @@ public class AddSpecialityHandler implements ICommand {
             speciality.setStudentsNumber(Integer.parseInt(numberOfStudents));
             ServiceFactory.getInstance().getSpecialityService().addSpeciality(speciality,coursesIdList);
         } catch (UserInfoException e) {
-            return Pages.ADMIN_PAGE+"?error="+e.getMessage();
+            return Pages.ADMIN_PAGE+"error="+e.getMessage();
         } catch (Exception e){
-            return Pages.ADMIN_PAGE+"?error=addSpecialityError";
+            return Pages.ADMIN_PAGE+"error=addSpecialityError";
         }
         return Pages.ADMIN_PAGE;
     }

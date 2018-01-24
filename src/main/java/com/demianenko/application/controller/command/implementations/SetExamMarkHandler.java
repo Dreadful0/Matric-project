@@ -24,12 +24,12 @@ public class SetExamMarkHandler implements ICommand {
         String examResultId = request.getParameter("chosenExamResult");
         LOGGER.debug("Set exam result "+examResultId+" "+mark);
         if(Str.isEmpty(mark, examResultId)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             ServiceFactory.getInstance().getExamService().setMark(Integer.parseInt(mark),Integer.parseInt(examResultId));
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=settingExamMarkError";
+            return Pages.ADMIN_PAGE+"error=settingExamMarkError";
         }
         return Pages.ADMIN_PAGE;
     }

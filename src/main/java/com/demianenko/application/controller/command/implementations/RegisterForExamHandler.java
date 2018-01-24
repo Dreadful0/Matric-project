@@ -34,21 +34,21 @@ public class RegisterForExamHandler implements ICommand {
                     .collect(Collectors.toList());
             user = (User)request.getSession().getAttribute(SessionParameters.USER);
         } catch (Exception e) {
-            return Pages.COURSES_PAGE+"?error=voidInputParameters";
+            return Pages.COURSES_PAGE+"error=voidInputParameters";
         }
         LOGGER.debug("Register for exams "+coursesIdList+" "+user);
         if(user == null){
             return Pages.LOGIN_PAGE;
         }
         if(coursesIdList!=null && coursesIdList.size()>user.getExamAttempts()){
-            return Pages.COURSES_PAGE+"?error=maxCourseRequests";
+            return Pages.COURSES_PAGE+"error=maxCourseRequests";
         }
         try {
             ServiceFactory.getInstance().getExamService().registerForExams(coursesIdList, user);
         } catch (UserInfoException e) {
-            return Pages.COURSES_PAGE+"?error="+e.getMessage();
+            return Pages.COURSES_PAGE+"error="+e.getMessage();
         } catch (Exception e){
-            return Pages.COURSES_PAGE+"?error=registerForExamError";
+            return Pages.COURSES_PAGE+"error=registerForExamError";
         }
         return Pages.COURSES_PAGE;
     }

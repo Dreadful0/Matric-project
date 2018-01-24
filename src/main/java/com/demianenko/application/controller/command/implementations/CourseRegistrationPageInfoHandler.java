@@ -26,7 +26,7 @@ public class CourseRegistrationPageInfoHandler implements ICommand {
             List<Course> courses = ServiceFactory.getInstance().getCourseService().getAllCourses();
             request.setAttribute("coursesList", courses);
         } catch (Exception e) {
-            return Pages.COURSES_PAGE_DIRECT_PATH+"?error=cantShowCourseRegistrationPageInfo";
+            return Pages.COURSES_PAGE_DIRECT_PATH+"error=cantShowCourseRegistrationPageInfo";
         }
         return Pages.COURSES_PAGE_DIRECT_PATH;
     }

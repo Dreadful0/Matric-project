@@ -29,7 +29,7 @@ public class RegistrationHandler implements ICommand {
         LOGGER.debug("Registration: "+firstName+" "+secondName+" "+email);
 
         if(Str.isEmpty(firstName, secondName, email, password)){
-            return Pages.REGISTRATION_PAGE+"?error=voidInputParameters";
+            return Pages.REGISTRATION_PAGE+"error=voidInputParameters";
         }
         User user = new User();
         user.setFirstName(firstName);
@@ -39,7 +39,7 @@ public class RegistrationHandler implements ICommand {
         try {
             ServiceFactory.getInstance().getRegistrationService().register(user);
         } catch (UserInfoException e) {
-            return Pages.REGISTRATION_PAGE+"?error="+e.getMessage();
+            return Pages.REGISTRATION_PAGE+"error="+e.getMessage();
         }
         return Pages.USER_PAGE;
     }

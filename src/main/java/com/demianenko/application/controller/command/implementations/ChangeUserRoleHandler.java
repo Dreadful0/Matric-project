@@ -24,12 +24,12 @@ public class ChangeUserRoleHandler implements ICommand {
         String role = request.getParameter("inputRole");
         LOGGER.debug("Change user role "+userEmail+" "+role);
         if(Str.isEmpty(userEmail,role)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             ServiceFactory.getInstance().getUserService().changeUserRole(userEmail, role);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=changeUserRoleError";
+            return Pages.ADMIN_PAGE+"error=changeUserRoleError";
         }
         return Pages.ADMIN_PAGE;
     }

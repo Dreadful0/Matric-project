@@ -30,7 +30,7 @@ public class LogoutHandler implements ICommand {
             response.addCookie(emailCookie);
             response.addCookie(passCookie);
         } catch (Exception e) {
-            return Pages.LOGIN_PAGE+"?error=logoutError";
+            return Pages.LOGIN_PAGE+"error=logoutError";
         }
         return Pages.LOGIN_PAGE;
     }

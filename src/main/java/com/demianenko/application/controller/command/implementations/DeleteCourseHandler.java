@@ -22,13 +22,13 @@ public class DeleteCourseHandler implements ICommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         String chosenCourse = request.getParameter("choosenCourse");
         if(Str.isEmpty(chosenCourse)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         LOGGER.debug("Delete course "+chosenCourse);
         try {
             ServiceFactory.getInstance().getCourseService().deleteCourse(Integer.parseInt(chosenCourse));
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=deletingCourseError";
+            return Pages.ADMIN_PAGE+"error=deletingCourseError";
         }
         return Pages.ADMIN_PAGE;
     }

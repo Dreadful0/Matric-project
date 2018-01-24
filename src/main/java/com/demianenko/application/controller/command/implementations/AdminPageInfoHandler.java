@@ -39,7 +39,7 @@ public class AdminPageInfoHandler implements ICommand{
             }
             request.setAttribute("examResultsMap", examResultsMap);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE_DIRECT_PATH+"?error=cantShowAdminPageInfo";
+            return Pages.ADMIN_PAGE_DIRECT_PATH+"error=cantShowAdminPageInfo";
         }
         return Pages.ADMIN_PAGE_DIRECT_PATH;
     }

@@ -37,7 +37,7 @@ public class LocalizationHandler implements ICommand {
                     break;
             }
         } catch (Exception e) {
-            return Pages.INDEX+"?error=changingLocaleError";
+            return Pages.INDEX+"error=changingLocaleError";
         }
         return Pages.INDEX;
     }

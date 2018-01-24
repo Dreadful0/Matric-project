@@ -24,14 +24,14 @@ public class AddCourseHandler implements ICommand {
         LOGGER.debug("Add course "+request.getParameter("inputCourseName"));
         String courseName = request.getParameter("inputCourseName");
         if(Str.isEmpty(courseName)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             Course course = new Course();
             course.setName(courseName);
             ServiceFactory.getInstance().getCourseService().addCourse(course);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=addingCourseError";
+            return Pages.ADMIN_PAGE+"error=addingCourseError";
         }
         return Pages.ADMIN_PAGE;
     }

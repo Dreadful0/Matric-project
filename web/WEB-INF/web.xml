@@ -6,4 +6,22 @@
     <welcome-file-list>
         <welcome-file>/jsp/index.jsp</welcome-file>
     </welcome-file-list>
+    <jsp-config>
+        <taglib>
+            <taglib-uri>auth</taglib-uri>
+            <taglib-location>/WEB-INF/tld/auth.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/jsp/errorPages/universalError.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/jsp/errorPages/404notFound.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>403</error-code>
+        <location>/jsp/errorPages/403accessDenied.jsp</location>
+    </error-page>
 </web-app>

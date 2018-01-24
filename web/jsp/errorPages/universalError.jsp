@@ -8,13 +8,13 @@
     <title>Title</title>
 </head>
 <body>
-    <c:import url="../components/navigation.jsp"/>
-    <div class="container">
-    <h1 style="color:red">ACCESS</h1>
-    <h1 style="color:red">DENIED</h1>
-    </div>
-    <c:import url="../components/error.jsp"/>
-    <c:import url="../components/footer.jsp"/>
-    <c:import url="../components/scripts.jsp"/>
+<c:import url="../components/navigation.jsp"/>
+<div class="container">
+    <h1 style="color:red">An error occured</h1>
+    <h2 style="color:red">Please contact the support</h2>
+</div>
+<c:import url="../components/error.jsp"/>
+<c:import url="../components/footer.jsp"/>
+<c:import url="../components/scripts.jsp"/>
 </body>
 </html>

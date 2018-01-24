@@ -34,7 +34,7 @@ public class PersonalInfoHandler implements ICommand{
             request.setAttribute("usersExamResultList", usersExamResults);
             request.setAttribute("usersSpecialityRequestList", usersSpecialityRequests);
         } catch (Exception e) {
-            return Pages.USER_PAGE_DIRECT_PATH+"?error=cantShowPersonalInfo";
+            return Pages.USER_PAGE_DIRECT_PATH+"error=cantShowPersonalInfo";
         }
         return Pages.USER_PAGE_DIRECT_PATH;
     }

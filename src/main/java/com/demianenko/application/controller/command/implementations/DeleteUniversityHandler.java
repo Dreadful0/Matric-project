@@ -23,12 +23,12 @@ public class DeleteUniversityHandler implements ICommand {
         String chosenUniversity = request.getParameter("chosenUniversity");
         LOGGER.debug("Delete university "+chosenUniversity);
         if(Str.isEmpty(chosenUniversity)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             ServiceFactory.getInstance().getUniversityService().deleteUniversity(Integer.parseInt(chosenUniversity));
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=deletingUniversityError";
+            return Pages.ADMIN_PAGE+"error=deletingUniversityError";
         }
         return Pages.ADMIN_PAGE;
     }

@@ -34,7 +34,7 @@ public class SpecialityRegistrationPageInfoHandler implements ICommand {
             request.setAttribute("userExamResults", examResults);
             LOGGER.debug("User exam results "+examResults.toString());
         } catch (Exception e) {
-            return Pages.REGISTRATION_PAGE+"?error=cantShowSpecialityRegistrationPageInfo";
+            return Pages.REGISTRATION_PAGE+"error=cantShowSpecialityRegistrationPageInfo";
         }
         return Pages.SPECIALITIES_PAGE_DIRECT_PATH;
     }

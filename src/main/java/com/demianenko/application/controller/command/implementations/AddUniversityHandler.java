@@ -24,14 +24,14 @@ public class AddUniversityHandler implements ICommand {
         String universityName = request.getParameter("inputUniversityName");
         LOGGER.debug("Add university "+universityName);
         if(Str.isEmpty(universityName)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             University university = new University();
             university.setName(universityName);
             ServiceFactory.getInstance().getUniversityService().addUniversity(university);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=addUniversityError";
+            return Pages.ADMIN_PAGE+"error=addUniversityError";
         }
         return Pages.ADMIN_PAGE;
     }

@@ -23,12 +23,12 @@ public class DeleteSpecialityHandler implements ICommand {
         String chosenSpeciality = request.getParameter("chosenSpeciality");
         LOGGER.debug("Delete speciality "+chosenSpeciality);
         if(Str.isEmpty(chosenSpeciality)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             ServiceFactory.getInstance().getSpecialityService().deleteSpeciality(Integer.parseInt(chosenSpeciality));
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=deleteSpecialityError";
+            return Pages.ADMIN_PAGE+"error=deleteSpecialityError";
         }
         return Pages.ADMIN_PAGE;
     }

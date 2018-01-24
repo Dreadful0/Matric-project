@@ -25,7 +25,7 @@ public class ModifyUniversityHandler implements ICommand {
         String id = request.getParameter("chosenUniversity");
         LOGGER.debug("Modify university "+id+" "+universityName);
         if(Str.isEmpty(universityName,id)){
-            return Pages.ADMIN_PAGE+"?error=voidInputParameters";
+            return Pages.ADMIN_PAGE+"error=voidInputParameters";
         }
         try {
             University university = new University();
@@ -33,7 +33,7 @@ public class ModifyUniversityHandler implements ICommand {
             university.setName(universityName);
             ServiceFactory.getInstance().getUniversityService().modifyUniversity(university);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=modifyUniversityError";
+            return Pages.ADMIN_PAGE+"error=modifyUniversityError";
         }
         return Pages.ADMIN_PAGE;
     }
