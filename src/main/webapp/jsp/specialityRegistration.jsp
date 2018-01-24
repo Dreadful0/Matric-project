@@ -5,7 +5,7 @@
 <head>
     <fmt:setBundle basename="text" var="rb" />
     <c:import url="components/dependencies.jsp"/>
-    <title>Title</title>
+    <title><fmt:message key="titles.specialityRegistration" bundle="${rb}"/></title>
 </head>
 <body>
 <c:import url="components/navigation.jsp"/>

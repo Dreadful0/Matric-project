@@ -12,7 +12,9 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/jsp/index.jsp">Home</a>
+        <a class="navbar-brand" href="/jsp/index.jsp">
+            <fmt:message key="navigation.home" bundle="${rb}"/>
+        </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -56,7 +58,9 @@
             </a></li>
             </my:if-user>
             <my:if-user role="user">
-            <li><a href="/Main?command=LOGOUT">Logout</a></li>
+            <li><a href="/Main?command=LOGOUT">
+                <fmt:message key="navigation.logout" bundle="${rb}"/>
+            </a></li>
             </my:if-user>
         </ul>
     </div>

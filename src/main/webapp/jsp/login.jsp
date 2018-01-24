@@ -16,25 +16,25 @@
             <form class="form-horizontal" action="/Main" method="post">
 
                 <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">
+                    <label for="inputEmail" class="col-lg-3 control-label">
                         <fmt:message key="loginPage.email" bundle="${rb}"/>
                     </label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-9">
                         <input type="text" name="inputEmail" class="form-control"
                                id="inputEmail" placeholder="<fmt:message key="loginPage.email" bundle="${rb}"/>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">
+                    <label for="inputPassword" class="col-lg-3 control-label">
                         <fmt:message key="loginPage.password" bundle="${rb}"/>
                     </label>
-                    <div class="col-lg-10">
+                    <div class="col-lg-9">
                         <input type="password" name="inputPassword" class="form-control"
                                id="inputPassword" placeholder="<fmt:message key="loginPage.password" bundle="${rb}"/>">
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
+                    <div class="col-lg-offset-3 col-lg-9">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="inputRemember">
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
+                    <div class="col-lg-offset-3 col-lg-9">
                         <button type="submit" class="btn btn-default"
                                 name="command" value="AUTHORIZATION">
                             <fmt:message key="navigation.login" bundle="${rb}"/>

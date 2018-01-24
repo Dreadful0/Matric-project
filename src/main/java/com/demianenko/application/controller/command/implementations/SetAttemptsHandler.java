@@ -25,7 +25,7 @@ public class SetAttemptsHandler implements ICommand {
         try {
             ServiceFactory.getInstance().getUserService().setUsersExamAttempts(SessionParameters.EXAM_ATTEMPTS);
         } catch (Exception e) {
-            return Pages.ADMIN_PAGE+"?error=settingAttemptsError";
+            return Pages.ADMIN_PAGE+"error=settingAttemptsError";
         }
         return Pages.ADMIN_PAGE;
     }

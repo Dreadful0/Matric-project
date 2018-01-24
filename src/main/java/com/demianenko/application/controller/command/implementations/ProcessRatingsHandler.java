@@ -24,9 +24,9 @@ public class ProcessRatingsHandler implements ICommand {
         try {
             ServiceFactory.getInstance().getSpecialityApplyingService().processRatings();
         } catch (UserInfoException e) {
-            return Pages.ADMIN_PAGE+"?error="+e.getMessage();
+            return Pages.ADMIN_PAGE+"error="+e.getMessage();
         } catch (Exception e){
-            return Pages.ADMIN_PAGE+"?error=processRatingsError";
+            return Pages.ADMIN_PAGE+"error=processRatingsError";
         }
         return Pages.ADMIN_PAGE;
     }

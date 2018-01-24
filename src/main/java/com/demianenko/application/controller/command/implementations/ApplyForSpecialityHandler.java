@@ -38,10 +38,10 @@ public class ApplyForSpecialityHandler implements ICommand {
                         .applyForSpeciality(Integer.parseInt(chosenSpecialityId), examResultIdList,
                                 (User)request.getSession().getAttribute(SessionParameters.USER));
             } catch (UserInfoException e) {
-                return Pages.SPECIALITIES_PAGE+"?error="+e.getMessage();
+                return Pages.SPECIALITIES_PAGE+"error="+e.getMessage();
             }
         } catch (Exception e) {
-            return Pages.SPECIALITIES_PAGE+"?error=applyingForSpecialityError";
+            return Pages.SPECIALITIES_PAGE+"error=applyingForSpecialityError";
         }
         return Pages.SPECIALITIES_PAGE;
     }

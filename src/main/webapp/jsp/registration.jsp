@@ -5,44 +5,44 @@
 <head>
     <fmt:setBundle basename="text" var="rb" />
     <c:import url="components/dependencies.jsp"/>
-    <title>Title</title>
+    <title><fmt:message key="titles.registration" bundle="${rb}"/></title>
 </head>
 <body>
     <c:import url="components/navigation.jsp"/>
     <div class="container">
         <div class="row">
-            <h1>Registration</h1>
+            <h1><fmt:message key="registrationPage.registration" bundle="${rb}"/></h1>
             <div class="col-sm-6 col-lg-6 col-lg-offset-3 col-sm-offset-3" data-effect="slide-right">
                 <form class="form-horizontal" action="/Main" method="post">
                     <div class="form-group">
-                        <label for="inputFirstName" class="col-lg-3 control-label">First name</label>
+                        <label for="inputFirstName" class="col-lg-3 control-label"><fmt:message key="registrationPage.firstName" bundle="${rb}"/></label>
                         <div class="col-lg-9">
-                            <input type="text" name="inputFirstName" class="form-control" id="inputFirstName" placeholder="First name">
+                            <input type="text" name="inputFirstName" class="form-control" id="inputFirstName" placeholder="<fmt:message key="registrationPage.firstName" bundle="${rb}"/>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputSecondName" class="col-lg-3 control-label">Second name</label>
+                        <label for="inputSecondName" class="col-lg-3 control-label"><fmt:message key="registrationPage.secondName" bundle="${rb}"/></label>
                         <div class="col-lg-9">
-                            <input type="text" name="inputSecondName" class="form-control" id="inputSecondName" placeholder="Second name">
+                            <input type="text" name="inputSecondName" class="form-control" id="inputSecondName" placeholder="<fmt:message key="registrationPage.secondName" bundle="${rb}"/>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-lg-3 control-label">Email</label>
+                        <label for="inputEmail" class="col-lg-3 control-label"><fmt:message key="registrationPage.email" bundle="${rb}"/></label>
                         <div class="col-lg-9">
-                            <input type="text" name="inputEmail" class="form-control" id="inputEmail" placeholder="Email">
+                            <input type="text" name="inputEmail" class="form-control" id="inputEmail" placeholder="<fmt:message key="registrationPage.email" bundle="${rb}"/>">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword" class="col-lg-3 control-label">Password</label>
+                        <label for="inputPassword" class="col-lg-3 control-label"><fmt:message key="registrationPage.password" bundle="${rb}"/></label>
                         <div class="col-lg-9">
-                            <input type="password" name="inputPassword" class="form-control" id="inputPassword" placeholder="Password">
+                            <input type="password" name="inputPassword" class="form-control" id="inputPassword" placeholder="<fmt:message key="registrationPage.password" bundle="${rb}"/>">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-lg-offset-3 col-lg-9">
                             <button type="submit" class="btn btn-default"
                                     name="command" value="REGISTRATION">
-                                Sign up
+                                <fmt:message key="registrationPage.signUp" bundle="${rb}"/>
                             </button>
                         </div>
                     </div>

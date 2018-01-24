@@ -31,7 +31,8 @@ public class AppListener implements ServletContextListener {
     }
 
     private void appInit(){
-        MySQLConnectionFactory.initFromProperties("db");
+        //MySQLConnectionFactory.initFromProperties("db");
+        MySQLConnectionFactory.initFromJNDI("jdbc/MatricDB");
         MySqlDaoFactory.init(MySQLConnectionFactory.getInstance());
         ServiceFactory.init(MySqlDaoFactory.getInstance(), new Sha256Encoder());
         initSecurityConstraints();
