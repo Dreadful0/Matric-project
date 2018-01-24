@@ -51,11 +51,11 @@ public class AppListener implements ServletContextListener {
         constraints.addConstraint(CommandList.ADD_SPECIALITY.name(),Role.ADMIN);
         constraints.addConstraint(CommandList.DELETE_SPECIALITY.name(),Role.ADMIN);
         constraints.addConstraint(CommandList.CHANGE_ROLE.name(),Role.ADMIN);
-        constraints.addConstraint(CommandList.COURSE_REGISTRATION_PAGE_INFO.name(),Role.USER);
-        constraints.addConstraint(CommandList.SPECIALITY_REGISTRATION_PAGE_INFO.name(),Role.USER);
-        constraints.addConstraint(CommandList.REGISTER_FOR_EXAM.name(),Role.USER);
+        constraints.addConstraint(CommandList.COURSE_REGISTRATION_PAGE_INFO.name(),Role.USER,Role.ADMIN);
+        constraints.addConstraint(CommandList.SPECIALITY_REGISTRATION_PAGE_INFO.name(),Role.USER,Role.ADMIN);
+        constraints.addConstraint(CommandList.REGISTER_FOR_EXAM.name(),Role.USER,Role.ADMIN);
         constraints.addConstraint(CommandList.SET_MARK.name(),Role.ADMIN);
-        constraints.addConstraint(CommandList.APPLY_FOR_SPECIALITY.name(),Role.USER);
+        constraints.addConstraint(CommandList.APPLY_FOR_SPECIALITY.name(),Role.USER,Role.ADMIN);
         constraints.addConstraint(CommandList.SET_EXAM_ATTEMPTS.name(),Role.ADMIN);
         constraints.addConstraint(CommandList.PROCESS_RATINGS.name(),Role.ADMIN);
     }

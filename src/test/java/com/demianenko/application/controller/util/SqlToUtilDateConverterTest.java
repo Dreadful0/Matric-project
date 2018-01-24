@@ -2,6 +2,7 @@ package com.demianenko.application.controller.util;
 
 import com.demianenko.application.controller.util.converters.SqlToUtilDateConverter;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,13 +21,11 @@ public class SqlToUtilDateConverterTest {
 
     @Test
     public void getSql() {
-        System.out.println(SqlToUtilDateConverter.getSql(utilDate));
-        System.out.println(sqlDate);
+        Assert.assertEquals(SqlToUtilDateConverter.getSql(utilDate),sqlDate);
     }
 
     @Test
     public void getUtil() {
-        System.out.println(SqlToUtilDateConverter.getUtil(sqlDate));
-        System.out.println(utilDate);
+        Assert.assertEquals(SqlToUtilDateConverter.getUtil(sqlDate),utilDate);
     }
 }

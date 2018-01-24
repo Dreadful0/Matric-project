@@ -35,5 +35,6 @@
     <orderEntry type="library" name="Maven: javax.servlet:jsp-api:2.0" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.4" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.10.19" level="project" />
   </component>
 </module>
